@@ -1,5 +1,7 @@
+
+<app-nav-bar></app-nav-bar>
 <!-- challenges.component.html -->
-<div class="challenges-page">
+<div class="challenges-page mt-5">
   <header class="page-header">
     <h1>Recycling Challenges</h1>
     <p>
@@ -21,7 +23,7 @@
   </div>
 
   <div class="challenges-grid">
-    <div class="challenge-card" *ngFor="let challenge of filteredChallenges">
+    <div class="challenge-card" *ngFor="let challenge of filteredChallenges ;let i= index">
       <div class="challenge-header">
         <h3>{{ challenge.name }}</h3>
         <span
@@ -52,7 +54,7 @@
 
         
 
-        <button class="join-button">Join Challenge</button>
+        <button class="join-button participant" [name]="challenge.id" [disabled]="list[i]"   (click)="addParticipant(challenge ,i)" >Join Challenge</button>
       </div>
     </div>
   </div>

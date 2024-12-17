@@ -14,20 +14,23 @@ export class ChallengePageComponent implements OnInit {
   challenges: Challenge[] = [];
   selectedDifficulty: string = 'all';
   difficulties: string[] = ['All', 'Easy', 'Medium', 'Hard'];
-
+  list:boolean[]=[]
   service = new GetRidServiceService();
   
   listChallenges: Challenge[] = [];
   constructor( ) {
     this.service.getChallenges$().subscribe((data: Challenge[]) => {
       this.challenges = data;
-      this.listChallenges = this.challenges.slice(0, 3);
+      this.listChallenges = this.challenges;
     });
+    for(let i = 0 ; i < this.listChallenges.length;i++){
+    this.list.push(false);
+    }
   }
   ngOnInit() {
     this.service.getChallenges$().subscribe((data: Challenge[]) => {
       this.challenges = data;
-      this.listChallenges = this.challenges.slice(0, 3);
+      this.listChallenges = this.challenges;
     });
   }
 
@@ -40,4 +43,17 @@ export class ChallengePageComponent implements OnInit {
       ? this.challenges
       : this.challenges.filter(c => c.difficulty.toLowerCase() === this.selectedDifficulty);
   }
+
+  addParticipant(c: Challenge ,i:number ) {
+    const updatedList = this.listChallenges.map(ch => 
+      ch.id === c.id ? { ...ch, participants: (ch.participants || 0) + 1 } : ch
+    );
+    console.log(updatedList);
+    this.service.setChallenges(updatedList);
+    this.list[i]=true;
+    
+  }
+  disableButton(button : HTMLButtonElement) {
+    button.disabled = true; // Disable the clicked button
+}
 }
