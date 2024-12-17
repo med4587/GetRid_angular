@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      .admin-layout {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .main-content {
+        display: flex;
+        flex: 1;
+      }
+      .sidebar {
+        width: 250px;
+        background-color: #f8f9fa;
+        padding: 15px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .content {
+        flex: 1;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin-layout">
+      <!-- Top navbar -->
+      <app-admin-nav-bar></app-admin-nav-bar>
+
+      <div class="main-content mt-5">
+        <!-- Left sidebar -->
+        <aside class="sidebar ">
+          <div class="profile-image">
+            <img src="assets/logo2.jpeg" alt="Profile picture" style="width: 250px; height: 800px;"/>
+          </div>
+        </aside>
+
+        <!-- Main content area -->
+        <main class="content">
+          <router-outlet ></router-outlet>
+        </main>
+      </div>
+
+      <!-- Footer -->
+    </div>
+    
+  </body>
+</html>

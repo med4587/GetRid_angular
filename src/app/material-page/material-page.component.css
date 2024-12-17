@@ -1,0 +1,70 @@
+/* materials.component.css */
+.materials-page {
+    padding: 2rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .category-filter {
+    margin-bottom: 2rem;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .filter-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .filter-buttons button.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .material-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    background-color: white;
+  }
+  
+  .material-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .material-info {
+    padding: 1rem;
+  }
+  
+  .category-tag {
+    background-color: #e0e0e0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+  
+  .recyclable-status {
+    margin: 1rem 0;
+  }
+  
+  .recyclable {
+    color: #4CAF50;
+  }

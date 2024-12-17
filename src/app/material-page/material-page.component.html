@@ -1,0 +1,32 @@
+<!-- materials.component.html -->
+<div class="materials-page">
+    <header class="page-header">
+      <h1>Recyclable Materials Guide</h1>
+      <p>Learn about different materials and how to properly recycle them</p>
+    </header>
+  
+    <div class="category-filter">
+      <div class="filter-buttons">
+        <button *ngFor="let category of categories"
+                [class.active]="selectedCategory === category.toLowerCase()"
+                (click)="filterByCategory(category)">
+          {{category}}
+        </button>
+      </div>
+    </div>
+  
+    <div class="materials-grid">
+      <div class="material-card" *ngFor="let material of filteredMaterials">
+        <div class="material-image">
+          <img [src]="material.image" [alt]="material.name">
+        </div>
+        <div class="material-info">
+          <h3>{{material.name}}</h3>
+          <span class="category-tag">{{material.name}}</span>
+          <p class="description" *ngFor="let a of material.description">{{a}}</p>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>

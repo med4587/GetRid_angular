@@ -1,0 +1,16 @@
+<section id="packages" class="pt-md-5">
+  <h2 class="text-center my-5">Materials</h2>
+  <div class="container">
+    <div class="row gy-5 mx-5 d-flex justify-content-center">
+      <div class="col-md-4" *ngFor="let a of listMaterials">
+        <app-item-material
+          [material]="a"
+          style="height: 1em"
+        ></app-item-material>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <a class="text-center my-5 btn btn-success" routerLink="/materials">See Other Materials</a>
+  </div>
+</section>

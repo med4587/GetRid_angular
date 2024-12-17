@@ -1,0 +1,12 @@
+
+
+.carousel-inner {
+    scroll-snap-type: x mandatory;
+    overflow-x: hidden;
+  }
+  .carousel-item {
+    scroll-snap-align: start;
+  }
+
+  
+  

@@ -1,0 +1,59 @@
+<!-- challenges.component.html -->
+<div class="challenges-page">
+  <header class="page-header">
+    <h1>Recycling Challenges</h1>
+    <p>
+      Join our community challenges and earn points while helping the
+      environment
+    </p>
+  </header>
+
+  <div class="difficulty-filter">
+    <div class="filter-buttons">
+      <button
+        *ngFor="let difficulty of difficulties"
+        [class.active]="selectedDifficulty === difficulty.toLowerCase()"
+        (click)="filterByDifficulty(difficulty)"
+      >
+        {{ difficulty }}
+      </button>
+    </div>
+  </div>
+
+  <div class="challenges-grid">
+    <div class="challenge-card" *ngFor="let challenge of filteredChallenges">
+      <div class="challenge-header">
+        <h3>{{ challenge.name }}</h3>
+        <span
+          class="difficulty-badge"
+          [class]="challenge.difficulty.toLowerCase()"
+        >
+          {{ challenge.difficulty }}
+        </span>
+      </div>
+
+      <div class="challenge-content">
+        <p class="description" *ngFor="let a of challenge.description">{{ a.task }} <span style="color:green"> {{a.bonus}}</span></p>
+
+        <div class="challenge-details">
+          <div class="detail">
+            <i class="fas fa-clock"></i>
+            <span>{{ challenge.days }} days</span>
+          </div>
+          <div class="detail">
+            <i class="fas fa-star"></i>
+            <span>{{ challenge.points }} points</span>
+          </div>
+          <div class="detail">
+            <i class="fas fa-users"></i>
+            <span>{{ challenge.participants }} participants</span>
+          </div>
+        </div>
+
+        
+
+        <button class="join-button">Join Challenge</button>
+      </div>
+    </div>
+  </div>
+</div>

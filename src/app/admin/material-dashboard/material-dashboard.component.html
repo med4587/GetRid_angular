@@ -1,0 +1,97 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h2>Recycling Materials</h2>
+    <button onclick="document.getElementById('addModal').style.display='block'" (click)="initMaterial()" class="btn btn-success">+ Add Material</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Material Name</th>
+        <th>Description</th>
+        
+        
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of listMaterials">
+        <td>{{a.name}}</td>
+        <td>{{a.description[0]}}</td>
+        
+        <td>
+          <button (click)="openEditModal(a)" class="btn btn-warning">Edit</button>
+          <button (click)="deleteMaterial(a.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <!-- More rows would be dynamically added here -->
+    </tbody>
+  </table>
+</div>
+
+<!-- Add Modal -->
+<div id="addModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h3>Add New Material</h3>
+    <form #f="ngForm" (ngSubmit)="addMaterial()">
+      <div class="form-group">
+        <label>Material Name:</label>
+        <input type="text" name="name" [(ngModel)]="material.name" required>
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <table>
+          <tr>
+            <th>Description</th>
+            
+          </tr>
+          <tr *ngFor="let y of material.description; let i = index">
+            <td>
+              <input type="text" name="{{i}}" [(ngModel)]="material.description[i]" required/>
+            </td>
+            
+          </tr>
+        </table>
+        <button type="button" (click)="addDescription()"> add description</button>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" onclick="document.getElementById('addModal').style.display='none'">Save Material</button>
+        <button type="button" onclick="document.getElementById('addModal').style.display='none'">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h3>Edit Material</h3>
+    <form #t="ngForm" (ngSubmit)="editMaterial(t,material.id)">
+      <div class="form-group">
+        <label>Material Name:</label>
+        <input type="text" name="name" [(ngModel)]="material.name" required>
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <table>
+          <tr>
+            <th>Description</th>
+            
+          </tr>
+          <tr *ngFor="let d of material.description; let i = index">
+            <td>
+              <input type="text" name="{{i}}" [(ngModel)]="material.description[i]" required/>
+            </td>
+          </tr>
+        </table>
+        <button type="button" (click)="addDescription()"> add description</button>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="btn btn-warning" onclick="document.getElementById('editModal').style.display='none'">Update Material</button>
+        <button type="button" onclick="document.getElementById('editModal').style.display='none'">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

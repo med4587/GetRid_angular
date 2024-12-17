@@ -1,0 +1,109 @@
+/* challenges.component.css */
+.challenges-page {
+    padding: 2rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .difficulty-filter {
+    margin-bottom: 2rem;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .filter-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .filter-buttons button.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .challenge-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: white;
+    padding: 1.5rem;
+  }
+  
+  .challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .difficulty-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+  
+  .difficulty-badge.easy {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .difficulty-badge.medium {
+    background-color: #FFC107;
+    color: black;
+  }
+  
+  .difficulty-badge.hard {
+    background-color: #F44336;
+    color: white;
+  }
+  
+  .challenge-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+  
+  .detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .materials-needed {
+    margin: 1rem 0;
+  }
+  
+  .materials-needed ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .join-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .join-button:hover {
+    background-color: #45a049;
+  }

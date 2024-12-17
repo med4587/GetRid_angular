@@ -1,0 +1,131 @@
+<div class="dashboard-container">
+    <div class="header">
+      <h2>Recycling Challenges</h2>
+      <button onclick="document.getElementById('addModal').style.display='block'" (click)="initChallenge()" class="btn btn-success">+ Add Challenge</button>
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Challenge Name</th>
+          <th>Description</th>
+          <th>Time Limit</th>
+          
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of listChallenges">
+          <td>{{a.name}}</td>
+          <td>{{a.description[0].task}}</td>
+          <td>{{a.days}}</td>
+          <td>
+            <button (click)="openEditModal(a)" class="btn btn-warning">Edit</button>
+            <button (click)="deleteChallenge(a.id)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+        <!-- More rows would be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Add Modal -->
+  <div id="addModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h3>Add New Challenge</h3>
+      <form #f="ngForm" (ngSubmit)="addchallenge()">
+        <div class="form-group">
+          <label>Challenge Name:</label>
+          <input type="text" name="name" [(ngModel)]="challenge.name" required>
+        </div>
+        <div class="form-group">
+          <label>Description:</label>
+          <table>
+            <tr>
+              <th>Task</th>
+              <th>Bonus(dt)</th>
+            </tr>
+            <tr *ngFor="let y of challenge.description; let i = index">
+              <td>
+                <input type="text" name="{{i}}" [(ngModel)]="y.task" required/>
+              </td>
+              <td>
+                <input type="text" name="bonus{{i}}" [(ngModel)]="y.bonus" required style="width: 82px; text-align: center;">
+              </td>
+            </tr>
+          </table>
+          <button type="button" (click)="adddescription()"> add description</button>
+        </div>
+        <div class="form-group">
+          <label>Time Limit (hours):</label>
+          <input type="number" name="days" [(ngModel)]="challenge.days" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" onclick="document.getElementById('addModal').style.display='none'">Save Challenge</button>
+          <button type="button" onclick="document.getElementById('addModal').style.display='none'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal " style="display: none;  ">
+    <div class="modal-content  " >
+      <h3>Edit Challenge</h3>
+      <form #t="ngForm" (ngSubmit)="editChallenge(t,challenge.id)">
+        <div class="form-group">
+          <label>Challenge Name:</label>
+          <input type="text" name="name" [(ngModel)]="challenge.name" required>
+        </div>
+        <div class="d-flex column">
+        <div class="description">
+        <div class="form-group">
+          <label>Description:</label>
+          <table>
+            <tr>
+              
+              <th class="">Task</th>
+              <th>Bonus(dt)</th>
+            </tr>
+            <tr *ngFor="let y of challenge.description; let i = index">
+              <td class="">
+                <input type="text" name="{{i}}" [(ngModel)]="y.task" required/>
+              </td>
+              <td>
+                <input type="text" name="bonus{{i}}" [(ngModel)]="y.bonus" required style="width: 82px; text-align: center;">
+              </td>
+            </tr>
+          </table>
+          <button type="button" (click)="adddescription()"> add description</button>
+        </div>
+      </div>
+      <div class="other_details">
+        <div class="form-group">
+          <label>Time Limit (hours):</label>
+          <input type="number" name="days" [(ngModel)]="challenge.days" required>
+        </div>
+        <div class="form-group">
+          <label>Points:</label>
+          <input type="number" name="points" [(ngModel)]="challenge.points" required>
+        </div>
+        <div class="form-group">
+          <label>Participants:</label>
+          <input type="number" name="participants" [(ngModel)]="challenge.participants" required>
+        </div>
+        <div class="form-group">
+          <label>Difficulty:</label>
+          <select name="difficulty" [(ngModel)]="challenge.difficulty" required>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+      </div>
+    </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-warning" onclick="document.getElementById('editModal').style.display='none'">Update Challenge</button>
+          <button type="button" onclick="document.getElementById('editModal').style.display='none'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
